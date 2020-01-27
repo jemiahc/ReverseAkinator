@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void guess(View view){
 
-        String message = "";
-        EditText editText = (EditText) findViewById(R.id.editText);
+        String message;
+        EditText editText = findViewById(R.id.editText);
 
         if(editText.getText().toString().isEmpty()){
             message = "Please enter a number, idiot...";
@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
             else if (userGuess < hidden)
                 message = "Higher!";
 
-            else{
+            else
                 message = "Yes, that's it! Again, again!";
                 generateRandomNumber();
-            }
+                Log.i("Info", Integer.toString(hidden));
+
         }
 
+        editText.setText("");
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
-        Log.i("Info", Integer.toString(hidden));
 
     }
 
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         generateRandomNumber();
+        Log.i("Secret_Number", Integer.toString(hidden));
 
     }
 }
